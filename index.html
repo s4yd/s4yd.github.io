@@ -10,15 +10,13 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
             color: #e5e7eb;
             background-color: #111827;
+            scroll-behavior: smooth;
         }
-
-        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -28,7 +26,6 @@
             border-bottom: 1px solid #374151;
             z-index: 1000;
         }
-
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -37,30 +34,24 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .nav-logo {
             font-size: 1.25rem;
             font-weight: bold;
             color: #06b6d4;
         }
-
         .nav-links {
             display: flex;
             gap: 2rem;
             list-style: none;
         }
-
         .nav-links a {
             color: #d1d5db;
             text-decoration: none;
             transition: color 0.3s;
         }
-
         .nav-links a:hover {
             color: #06b6d4;
         }
-
-        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -69,11 +60,9 @@
             text-align: center;
             padding: 6rem 1.5rem 2rem;
         }
-
         .hero-content {
             max-width: 800px;
         }
-
         .hero-icon {
             width: 128px;
             height: 128px;
@@ -84,13 +73,6 @@
             align-items: center;
             justify-content: center;
         }
-
-        .hero-icon svg {
-            width: 64px;
-            height: 64px;
-            stroke: white;
-        }
-
         h1 {
             font-size: 4rem;
             font-weight: bold;
@@ -100,109 +82,82 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
         .hero-subtitle {
             font-size: 1.875rem;
             color: #d1d5db;
             margin-bottom: 1rem;
         }
-
         .hero-description {
             font-size: 1.125rem;
             color: #9ca3af;
             margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
         }
-
         .hero-buttons {
             display: flex;
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
         }
-
         .btn {
             padding: 0.75rem 2rem;
             border-radius: 0.5rem;
             font-weight: 500;
             text-decoration: none;
             transition: all 0.3s;
-            display: inline-block;
         }
-
         .btn-primary {
             background-color: #06b6d4;
             color: white;
         }
-
         .btn-primary:hover {
             background-color: #0891b2;
         }
-
         .btn-secondary {
             background-color: #1f2937;
             color: white;
         }
-
         .btn-secondary:hover {
             background-color: #374151;
         }
-
-        /* Sections */
         section {
             padding: 5rem 1.5rem;
             max-width: 1200px;
             margin: 0 auto;
         }
-
         .section-alt {
             background-color: rgba(31, 41, 55, 0.5);
         }
-
         h2 {
             font-size: 2.5rem;
             font-weight: bold;
             margin-bottom: 3rem;
             text-align: center;
         }
-
         h3 {
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 1rem;
             color: #06b6d4;
         }
-
-        /* About Section */
         .about-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
-
-        .about-card p {
+        .about-card p, .about-card ul {
             color: #d1d5db;
-            margin-bottom: 1rem;
         }
-
         .about-card ul {
             list-style: none;
-            color: #d1d5db;
         }
-
         .about-card ul li {
             margin-bottom: 0.5rem;
         }
-
-        /* Certifications */
         .cert-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
         }
-
         .cert-card {
             background-color: #1f2937;
             padding: 1.5rem;
@@ -210,78 +165,58 @@
             border: 1px solid #374151;
             transition: border-color 0.3s;
         }
-
         .cert-card:hover {
             border-color: #06b6d4;
         }
-
         .cert-name {
             color: #06b6d4;
             font-weight: bold;
             font-size: 1.25rem;
-            margin-bottom: 0.5rem;
         }
-
         .cert-org {
             color: #9ca3af;
             font-size: 0.875rem;
-            margin-bottom: 0.25rem;
         }
-
         .cert-id {
             color: #6b7280;
             font-size: 0.75rem;
         }
-
-        /* Skills Section */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
         }
-
         .skill-card {
             background-color: #1f2937;
             padding: 1.5rem;
             border-radius: 0.5rem;
             border: 1px solid #374151;
-            transition: all 0.3s;
+            transition: border-color 0.3s;
         }
-
         .skill-card:hover {
             border-color: #06b6d4;
         }
-
-        .skill-icon {
-            width: 40px;
-            height: 40px;
-            margin-bottom: 1rem;
-            stroke: #06b6d4;
-        }
-
         .skill-list {
             list-style: none;
             margin-top: 1rem;
         }
-
         .skill-list li {
             color: #9ca3af;
             font-size: 0.875rem;
             margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
+            padding-left: 1rem;
+            position: relative;
         }
-
         .skill-list li:before {
             content: '';
             width: 8px;
             height: 8px;
             background-color: #06b6d4;
             border-radius: 50%;
-            margin-right: 0.5rem;
+            position: absolute;
+            left: 0;
+            top: 0.4rem;
         }
-
-        /* Experience Section */
         .experience-item {
             background-color: #1f2937;
             padding: 1.5rem;
@@ -289,41 +224,30 @@
             border-left: 4px solid #06b6d4;
             margin-bottom: 2rem;
         }
-
         .experience-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
             margin-bottom: 1rem;
-            flex-wrap: wrap;
         }
-
+        .experience-company {
+            color: #9ca3af;
+        }
         .experience-date {
             color: #6b7280;
             font-size: 0.875rem;
         }
-
-        .experience-company {
-            color: #9ca3af;
-            margin-bottom: 0.5rem;
-        }
-
         .experience-item ul {
             list-style: none;
             color: #d1d5db;
         }
-
         .experience-item ul li {
             margin-bottom: 0.5rem;
         }
-
-        /* Projects Section */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
-
         .project-card {
             background-color: #1f2937;
             padding: 1.5rem;
@@ -331,60 +255,52 @@
             border: 1px solid #374151;
             transition: border-color 0.3s;
         }
-
         .project-card:hover {
             border-color: #06b6d4;
         }
-
         .project-card p {
             color: #d1d5db;
             margin-bottom: 1rem;
         }
-
         .project-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
         }
-
         .tag {
             padding: 0.25rem 0.75rem;
             background-color: #374151;
             border-radius: 0.25rem;
             font-size: 0.875rem;
-            color: #d1d5db;
         }
-
-        /* Education Section */
         .education-item {
             background-color: #1f2937;
             padding: 1.5rem;
             border-radius: 0.5rem;
             margin-bottom: 1.5rem;
         }
-
+        .education-subtitle {
+            color: #9ca3af;
+        }
         .education-item ul {
             list-style: none;
             color: #d1d5db;
             margin-top: 1rem;
         }
-
         .education-item ul li {
             margin-bottom: 0.5rem;
         }
-
-        .education-subtitle {
-            color: #9ca3af;
+        .contact-intro {
+            text-align: center;
+            font-size: 1.25rem;
+            color: #d1d5db;
+            margin-bottom: 3rem;
         }
-
-        /* Contact Section */
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
-            margin-top: 3rem;
         }
-
         .contact-card {
             background-color: #1f2937;
             padding: 1.5rem;
@@ -395,79 +311,40 @@
             color: inherit;
             display: block;
         }
-
         .contact-card:hover {
             background-color: #374151;
         }
-
-        .contact-icon {
-            width: 32px;
-            height: 32px;
-            margin: 0 auto 0.75rem;
-            stroke: #06b6d4;
-        }
-
         .contact-label {
             color: #9ca3af;
             font-size: 0.875rem;
-            margin-bottom: 0.25rem;
+            margin: 0.75rem 0 0.25rem;
         }
-
         .contact-value {
             color: white;
         }
-
-        /* Footer */
         footer {
             padding: 2rem 1.5rem;
             border-top: 1px solid #374151;
             text-align: center;
             color: #9ca3af;
         }
-
-        footer p {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: #d1d5db;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
             h1 {
                 font-size: 2.5rem;
             }
-
             .hero-subtitle {
                 font-size: 1.5rem;
             }
-
             h2 {
                 font-size: 2rem;
-            }
-
-            .experience-header {
-                flex-direction: column;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <div class="nav-logo">Sayedul Islam</div>
@@ -479,18 +356,12 @@
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="mobile-menu-btn">☰</button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <div class="hero-icon">
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-                </svg>
-            </div>
+            <div class="hero-icon">🛡️</div>
             <h1>Sayedul Islam</h1>
             <p class="hero-subtitle">Network & Cyber Security Engineer</p>
             <p class="hero-description">
@@ -503,34 +374,26 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="section-alt">
         <h2>About Me</h2>
         <div class="about-grid">
             <div class="about-card">
                 <h3>Profile</h3>
-                <p>
-                    Certified Network & Cyber Security Professional with B.Sc. in Electrical and Electronics Engineering. 
-                    Proven track record delivering global remote services and managing local onsite projects.
-                </p>
-                <p>
-                    Expertise in designing, implementing, and securing complex network infrastructures including 
-                    Cisco and MikroTik platforms. Skilled in penetration testing, firewall optimization, and DNS security.
-                </p>
+                <p>Certified Network & Cyber Security Professional with B.Sc. in Electrical and Electronics Engineering. Proven track record delivering global remote services and managing local onsite projects.</p>
+                <p>Expertise in designing, implementing, and securing complex network infrastructures including Cisco and MikroTik platforms. Skilled in penetration testing, firewall optimization, and DNS security.</p>
             </div>
             <div class="about-card">
                 <h3>Quick Facts</h3>
                 <ul>
                     <li><strong>Location:</strong> Khulna, Bangladesh</li>
                     <li><strong>Education:</strong> B.Sc. in EEE</li>
-                    <li><strong>Experience:</strong> 3+ years in Network Engineering</li>
+                    <li><strong>Experience:</strong> 3+ years</li>
                     <li><strong>Languages:</strong> Bengali, English</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- Certifications -->
     <section id="certifications">
         <h2>🏆 Certifications</h2>
         <div class="cert-grid">
@@ -557,14 +420,10 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
     <section id="skills" class="section-alt">
         <h2>Technical Skills</h2>
         <div class="skills-grid">
             <div class="skill-card">
-                <svg class="skill-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-                </svg>
                 <h3>Network Engineering</h3>
                 <ul class="skill-list">
                     <li>Cisco Router & Switch</li>
@@ -575,9 +434,6 @@
                 </ul>
             </div>
             <div class="skill-card">
-                <svg class="skill-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-                </svg>
                 <h3>Cybersecurity</h3>
                 <ul class="skill-list">
                     <li>Penetration Testing</li>
@@ -588,9 +444,6 @@
                 </ul>
             </div>
             <div class="skill-card">
-                <svg class="skill-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
                 <h3>Systems & Tools</h3>
                 <ul class="skill-list">
                     <li>Linux Administration</li>
@@ -601,10 +454,7 @@
                 </ul>
             </div>
             <div class="skill-card">
-                <svg class="skill-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
-                <h3>Protocols & Technologies</h3>
+                <h3>Protocols</h3>
                 <ul class="skill-list">
                     <li>TCP/IP</li>
                     <li>BGP/OSPF</li>
@@ -614,9 +464,6 @@
                 </ul>
             </div>
             <div class="skill-card">
-                <svg class="skill-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-                </svg>
                 <h3>Infrastructure</h3>
                 <ul class="skill-list">
                     <li>Network Redundancy</li>
@@ -627,9 +474,6 @@
                 </ul>
             </div>
             <div class="skill-card">
-                <svg class="skill-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
                 <h3>Additional</h3>
                 <ul class="skill-list">
                     <li>Technical Documentation</li>
@@ -642,7 +486,6 @@
         </div>
     </section>
 
-    <!-- Experience Section -->
     <section id="experience">
         <h2>💼 Experience</h2>
         <div class="experience-item">
@@ -659,7 +502,6 @@
                 <li>• Contributed to enterprise network design and security enhancement projects</li>
             </ul>
         </div>
-
         <div class="experience-item">
             <div class="experience-header">
                 <div>
@@ -675,71 +517,41 @@
                 <li>• Wi-Fi hotspot security and Lancache server deployment</li>
             </ul>
         </div>
-
-        <div class="experience-item" style="border-left-color: #6b7280;">
-            <div class="experience-header">
-                <div>
-                    <h3 style="color: #d1d5db;">Executive (Part-Time)</h3>
-                    <p class="experience-company">Exord Online</p>
-                </div>
-                <span class="experience-date">Oct 2017 - Apr 2018</span>
-            </div>
-            <ul>
-                <li>• Technical support to clients and digital service content enrichment</li>
-                <li>• Assisted in NOC operations and system monitoring</li>
-            </ul>
-        </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects" class="section-alt">
         <h2>Key Projects</h2>
         <div class="projects-grid">
             <div class="project-card">
                 <h3>Network Security Hardening</h3>
-                <p>
-                    Managed full-cycle security hardening including penetration testing, advanced firewalling, 
-                    and vulnerability assessments for enterprise clients.
-                </p>
+                <p>Managed full-cycle security hardening including penetration testing, advanced firewalling, and vulnerability assessments for enterprise clients.</p>
                 <div class="project-tags">
                     <span class="tag">Penetration Testing</span>
                     <span class="tag">Firewall Config</span>
                     <span class="tag">Security Audit</span>
                 </div>
             </div>
-
             <div class="project-card">
                 <h3>Network Redundancy Solutions</h3>
-                <p>
-                    Engineered network redundancy solutions with 4G LTE backup and dual-ISP failover 
-                    ensuring 99.9% uptime for critical infrastructure.
-                </p>
+                <p>Engineered network redundancy solutions with 4G LTE backup and dual-ISP failover ensuring 99.9% uptime for critical infrastructure.</p>
                 <div class="project-tags">
                     <span class="tag">Failover Config</span>
                     <span class="tag">Load Balancing</span>
                     <span class="tag">High Availability</span>
                 </div>
             </div>
-
             <div class="project-card">
                 <h3>DNS Security Implementation</h3>
-                <p>
-                    Deployed advanced DNS security with DNS-over-HTTPS (DoH) and Pi-hole based 
-                    ad-blocking to enhance privacy and network performance.
-                </p>
+                <p>Deployed advanced DNS security with DNS-over-HTTPS (DoH) and Pi-hole based ad-blocking to enhance privacy and network performance.</p>
                 <div class="project-tags">
                     <span class="tag">DoH</span>
                     <span class="tag">Pi-hole</span>
                     <span class="tag">DNS Security</span>
                 </div>
             </div>
-
             <div class="project-card">
                 <h3>Thesis: Bufferbloat Analysis</h3>
-                <p>
-                    Investigated excessive buffering in networks causing high latency. Analyzed impacts 
-                    on real-time applications and applied testing methods to measure network performance.
-                </p>
+                <p>Investigated excessive buffering in networks causing high latency. Analyzed impacts on real-time applications and applied testing methods.</p>
                 <div class="project-tags">
                     <span class="tag">Network Analysis</span>
                     <span class="tag">Performance Testing</span>
@@ -749,7 +561,6 @@
         </div>
     </section>
 
-    <!-- Education Section -->
     <section id="education">
         <h2>🎓 Education & Training</h2>
         <div class="education-item">
@@ -768,20 +579,31 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="section-alt">
         <h2>Get In Touch</h2>
-        <p style="text-align: center; font-size: 1.25rem; color: #d1d5db; margin-bottom: 3rem;">
-            Looking for a Network or Security Engineer? Let's discuss how I can help secure and optimize your infrastructure.
-        </p>
+        <p class="contact-intro">Looking for a Network or Security Engineer? Let's discuss how I can help secure and optimize your infrastructure.</p>
         <div class="contact-grid">
             <a href="mailto:tosayedmirza@gmail.com" class="contact-card">
-                <svg class="contact-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
+                <div style="font-size: 2rem;">📧</div>
                 <p class="contact-label">Email</p>
                 <p class="contact-value">tosayedmirza@gmail.com</p>
             </a>
-            <a href="https://linkedin.com/in/sayed4" target="_blank" rel="noopener noreferrer" class="contact-card">
-                <svg class="contact-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-
+            <a href="https://linkedin.com/in/sayed4" target="_blank" class="contact-card">
+                <div style="font-size: 2rem;">💼</div>
+                <p class="contact-label">LinkedIn</p>
+                <p class="contact-value">linkedin.com/in/sayed4</p>
+            </a>
+            <div class="contact-card">
+                <div style="font-size: 2rem;">📱</div>
+                <p class="contact-label">WhatsApp</p>
+                <p class="contact-value">+88 01838377410</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Sayedul Islam. All rights reserved.</p>
+        <p style="font-size: 0.875rem; margin-top: 0.5rem;">Network & Cyber Security Engineer</p>
+    </footer>
+</body>
+</html>
