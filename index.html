@@ -1,0 +1,334 @@
+import React, { useState } from 'react';
+import { Shield, Network, Code, Mail, Linkedin, FileText, ChevronDown, Award, Briefcase, GraduationCap, Terminal } from 'lucide-react';
+
+export default function Portfolio() {
+  const [activeSection, setActiveSection] = useState('home');
+
+  const scrollToSection = (id) => {
+    setActiveSection(id);
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-900 text-gray-100">
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full bg-gray-900/95 backdrop-blur-sm border-b border-gray-800 z-50">
+        <div className="max-w-6xl mx-auto px-6 py-4">
+          <div className="flex justify-between items-center">
+            <div className="text-xl font-bold text-cyan-400">Sayedul Islam</div>
+            <div className="hidden md:flex space-x-8">
+              {['Home', 'About', 'Skills', 'Experience', 'Projects', 'Contact'].map((item) => (
+                <button
+                  key={item}
+                  onClick={() => scrollToSection(item.toLowerCase())}
+                  className="text-gray-300 hover:text-cyan-400 transition-colors"
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section id="home" className="min-h-screen flex items-center justify-center px-6 pt-16">
+        <div className="max-w-4xl text-center">
+          <div className="mb-8">
+            <div className="inline-flex items-center justify-center w-32 h-32 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 mb-6">
+              <Shield className="w-16 h-16 text-white" />
+            </div>
+          </div>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text">
+            Sayedul Islam
+          </h1>
+          <p className="text-2xl md:text-3xl text-gray-300 mb-4">
+            Network & Cyber Security Engineer
+          </p>
+          <p className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
+            Certified professional specializing in network infrastructure design, cybersecurity, and penetration testing
+          </p>
+          <div className="flex justify-center space-x-4">
+            <a
+              href="#contact"
+              onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}
+              className="px-8 py-3 bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg font-medium transition-colors"
+            >
+              Get In Touch
+            </a>
+            <a
+              href="#projects"
+              onClick={(e) => { e.preventDefault(); scrollToSection('projects'); }}
+              className="px-8 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-lg font-medium transition-colors"
+            >
+              View Projects
+            </a>
+          </div>
+          <div className="mt-12">
+            <ChevronDown className="w-8 h-8 text-gray-500 mx-auto animate-bounce" />
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 px-6 bg-gray-800/50">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl font-bold mb-12 text-center">About Me</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-2xl font-semibold mb-4 text-cyan-400">Profile</h3>
+              <p className="text-gray-300 leading-relaxed mb-4">
+                Certified Network & Cyber Security Professional with B.Sc. in Electrical and Electronics Engineering. 
+                Proven track record delivering global remote services and managing local onsite projects.
+              </p>
+              <p className="text-gray-300 leading-relaxed">
+                Expertise in designing, implementing, and securing complex network infrastructures including 
+                Cisco and MikroTik platforms. Skilled in penetration testing, firewall optimization, and DNS security.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-2xl font-semibold mb-4 text-cyan-400">Quick Facts</h3>
+              <ul className="space-y-2 text-gray-300">
+                <li><strong>Location:</strong> Khulna, Bangladesh</li>
+                <li><strong>Education:</strong> B.Sc. in EEE</li>
+                <li><strong>Experience:</strong> 3+ years in Network Engineering</li>
+                <li><strong>Languages:</strong> Bengali, English</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications */}
+      <section className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold mb-12 text-center flex items-center justify-center">
+            <Award className="w-10 h-10 mr-3 text-cyan-400" />
+            Certifications
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { name: 'MTCNA', org: 'MikroTik', id: '2511NA9595' },
+              { name: 'MTCRE', org: 'MikroTik', id: '2511RE9608' },
+              { name: 'MTCSE', org: 'MikroTik', id: '2511SE9630' },
+              { name: 'CCEP', org: 'Red Team Leaders', id: 'Certified' }
+            ].map((cert, idx) => (
+              <div key={idx} className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-cyan-500 transition-colors">
+                <div className="text-cyan-400 font-bold text-xl mb-2">{cert.name}</div>
+                <div className="text-gray-400 text-sm mb-1">{cert.org}</div>
+                <div className="text-gray-500 text-xs">ID: {cert.id}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section id="skills" className="py-20 px-6 bg-gray-800/50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold mb-12 text-center">Technical Skills</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { icon: Network, title: 'Network Engineering', skills: ['Cisco Router & Switch', 'MikroTik Configuration', 'Network Design', 'IP Planning', 'VLAN & Routing'] },
+              { icon: Shield, title: 'Cybersecurity', skills: ['Penetration Testing', 'Firewall Management', 'Security Hardening', 'Threat Analysis', 'Vulnerability Assessment'] },
+              { icon: Terminal, title: 'Systems & Tools', skills: ['Linux Administration', 'DNS-over-HTTPS', 'Pi-hole', 'FortiGate', 'Cisco ASA'] },
+              { icon: Code, title: 'Protocols & Technologies', skills: ['TCP/IP', 'BGP/OSPF', 'VPN', 'DHCP/DNS', 'Network Monitoring'] },
+              { icon: Network, title: 'Infrastructure', skills: ['Network Redundancy', '4G LTE Failover', 'Dual-ISP Setup', 'Load Balancing', 'High Availability'] },
+              { icon: FileText, title: 'Additional', skills: ['Technical Documentation', 'NOC Operations', 'Project Management', 'Training & Support', 'Traffic Analysis'] }
+            ].map((category, idx) => (
+              <div key={idx} className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-cyan-500 transition-all">
+                <category.icon className="w-10 h-10 text-cyan-400 mb-4" />
+                <h3 className="text-xl font-semibold mb-4">{category.title}</h3>
+                <ul className="space-y-2">
+                  {category.skills.map((skill, i) => (
+                    <li key={i} className="text-gray-400 text-sm flex items-center">
+                      <span className="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>
+                      {skill}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Experience Section */}
+      <section id="experience" className="py-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl font-bold mb-12 text-center flex items-center justify-center">
+            <Briefcase className="w-10 h-10 mr-3 text-cyan-400" />
+            Experience
+          </h2>
+          <div className="space-y-8">
+            <div className="bg-gray-800 p-6 rounded-lg border-l-4 border-cyan-500">
+              <div className="flex justify-between items-start mb-3">
+                <div>
+                  <h3 className="text-2xl font-semibold text-cyan-400">Network Engineer</h3>
+                  <p className="text-gray-400">Freelance - Remote via Upwork</p>
+                </div>
+                <span className="text-gray-500 text-sm">Sep 2021 - Present</span>
+              </div>
+              <ul className="space-y-2 text-gray-300">
+                <li>• Delivered global remote network engineering services specializing in Cisco and FortiGate</li>
+                <li>• Provided Tier 2 NOC troubleshooting and managed IP address planning</li>
+                <li>• Contributed to enterprise network design and security enhancement projects</li>
+              </ul>
+            </div>
+
+            <div className="bg-gray-800 p-6 rounded-lg border-l-4 border-cyan-500">
+              <div className="flex justify-between items-start mb-3">
+                <div>
+                  <h3 className="text-2xl font-semibold text-cyan-400">Network Engineer</h3>
+                  <p className="text-gray-400">Project - Local Client</p>
+                </div>
+                <span className="text-gray-500 text-sm">Sep 2021 - Present</span>
+              </div>
+              <ul className="space-y-2 text-gray-300">
+                <li>• Penetration testing and firewall security optimization</li>
+                <li>• Implemented 4G LTE and dual-ISP failover for network redundancy</li>
+                <li>• Deployed secure DNS-over-HTTPS and Pi-hole based ad-blocking</li>
+                <li>• Wi-Fi hotspot security and Lancache server deployment</li>
+              </ul>
+            </div>
+
+            <div className="bg-gray-800 p-6 rounded-lg border-l-4 border-gray-600">
+              <div className="flex justify-between items-start mb-3">
+                <div>
+                  <h3 className="text-2xl font-semibold">Executive (Part-Time)</h3>
+                  <p className="text-gray-400">Exord Online</p>
+                </div>
+                <span className="text-gray-500 text-sm">Oct 2017 - Apr 2018</span>
+              </div>
+              <ul className="space-y-2 text-gray-300">
+                <li>• Technical support to clients and digital service content enrichment</li>
+                <li>• Assisted in NOC operations and system monitoring</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="py-20 px-6 bg-gray-800/50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold mb-12 text-center">Key Projects</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-cyan-500 transition-all">
+              <h3 className="text-2xl font-semibold mb-4 text-cyan-400">Network Security Hardening</h3>
+              <p className="text-gray-300 mb-4">
+                Managed full-cycle security hardening including penetration testing, advanced firewalling, 
+                and vulnerability assessments for enterprise clients.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 bg-gray-700 rounded text-sm">Penetration Testing</span>
+                <span className="px-3 py-1 bg-gray-700 rounded text-sm">Firewall Config</span>
+                <span className="px-3 py-1 bg-gray-700 rounded text-sm">Security Audit</span>
+              </div>
+            </div>
+
+            <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-cyan-500 transition-all">
+              <h3 className="text-2xl font-semibold mb-4 text-cyan-400">Network Redundancy Solutions</h3>
+              <p className="text-gray-300 mb-4">
+                Engineered network redundancy solutions with 4G LTE backup and dual-ISP failover 
+                ensuring 99.9% uptime for critical infrastructure.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 bg-gray-700 rounded text-sm">Failover Config</span>
+                <span className="px-3 py-1 bg-gray-700 rounded text-sm">Load Balancing</span>
+                <span className="px-3 py-1 bg-gray-700 rounded text-sm">High Availability</span>
+              </div>
+            </div>
+
+            <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-cyan-500 transition-all">
+              <h3 className="text-2xl font-semibold mb-4 text-cyan-400">DNS Security Implementation</h3>
+              <p className="text-gray-300 mb-4">
+                Deployed advanced DNS security with DNS-over-HTTPS (DoH) and Pi-hole based 
+                ad-blocking to enhance privacy and network performance.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 bg-gray-700 rounded text-sm">DoH</span>
+                <span className="px-3 py-1 bg-gray-700 rounded text-sm">Pi-hole</span>
+                <span className="px-3 py-1 bg-gray-700 rounded text-sm">DNS Security</span>
+              </div>
+            </div>
+
+            <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-cyan-500 transition-all">
+              <h3 className="text-2xl font-semibold mb-4 text-cyan-400">Thesis: Bufferbloat Analysis</h3>
+              <p className="text-gray-300 mb-4">
+                Investigated excessive buffering in networks causing high latency. Analyzed impacts 
+                on real-time applications and applied testing methods to measure network performance.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 bg-gray-700 rounded text-sm">Network Analysis</span>
+                <span className="px-3 py-1 bg-gray-700 rounded text-sm">Performance Testing</span>
+                <span className="px-3 py-1 bg-gray-700 rounded text-sm">Research</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Education Section */}
+      <section className="py-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl font-bold mb-12 text-center flex items-center justify-center">
+            <GraduationCap className="w-10 h-10 mr-3 text-cyan-400" />
+            Education & Training
+          </h2>
+          <div className="space-y-6">
+            <div className="bg-gray-800 p-6 rounded-lg">
+              <h3 className="text-xl font-semibold text-cyan-400">B.Sc. in Electrical and Electronics Engineering</h3>
+              <p className="text-gray-400">North Western University • 2022</p>
+            </div>
+            <div className="bg-gray-800 p-6 rounded-lg">
+              <h3 className="text-xl font-semibold mb-4">Professional Training</h3>
+              <ul className="space-y-2 text-gray-300">
+                <li>• Cisco Certified Network Associate (CCNA) - KUET, 2025</li>
+                <li>• Cisco Certified Network Professional (CCNP ENCOR) - CSL Academy, 2025</li>
+                <li>• Red Hat Certified System Administrator (RHCSA) - CSL Academy, 2025</li>
+                <li>• Cisco Network Security - NACTAR, 2025</li>
+                <li>• Ethical Hacker - Cisco Network Academy, 2025</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 px-6 bg-gray-800/50">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl font-bold mb-8">Get In Touch</h2>
+          <p className="text-xl text-gray-300 mb-12">
+            Looking for a Network or Security Engineer? Let's discuss how I can help secure and optimize your infrastructure.
+          </p>
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            <a href="mailto:tosayedmirza@gmail.com" className="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition-colors">
+              <Mail className="w-8 h-8 text-cyan-400 mx-auto mb-3" />
+              <p className="text-gray-400 text-sm">Email</p>
+              <p className="text-white">tosayedmirza@gmail.com</p>
+            </a>
+            <a href="https://linkedin.com/in/sayed4" target="_blank" rel="noopener noreferrer" className="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition-colors">
+              <Linkedin className="w-8 h-8 text-cyan-400 mx-auto mb-3" />
+              <p className="text-gray-400 text-sm">LinkedIn</p>
+              <p className="text-white">linkedin.com/in/sayed4</p>
+            </a>
+            <div className="bg-gray-800 p-6 rounded-lg">
+              <Network className="w-8 h-8 text-cyan-400 mx-auto mb-3" />
+              <p className="text-gray-400 text-sm">WhatsApp</p>
+              <p className="text-white">+88 01838377410</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-8 px-6 border-t border-gray-800">
+        <div className="max-w-6xl mx-auto text-center text-gray-400">
+          <p>© 2024 Sayedul Islam. All rights reserved.</p>
+          <p className="text-sm mt-2">Network & Cyber Security Engineer</p>
+        </div>
+      </footer>
+    </div>
+  );
+}
