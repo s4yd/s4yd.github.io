@@ -1,334 +1,787 @@
-import React, { useState } from 'react';
-import { Shield, Network, Code, Mail, Linkedin, FileText, ChevronDown, Award, Briefcase, GraduationCap, Terminal } from 'lucide-react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayedul Islam - Network & Security Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-export default function Portfolio() {
-  const [activeSection, setActiveSection] = useState('home');
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #e5e7eb;
+            background-color: #111827;
+        }
 
-  const scrollToSection = (id) => {
-    setActiveSection(id);
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #374151;
+            z-index: 1000;
+        }
 
-  return (
-    <div className="min-h-screen bg-gray-900 text-gray-100">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-gray-900/95 backdrop-blur-sm border-b border-gray-800 z-50">
-        <div className="max-w-6xl mx-auto px-6 py-4">
-          <div className="flex justify-between items-center">
-            <div className="text-xl font-bold text-cyan-400">Sayedul Islam</div>
-            <div className="hidden md:flex space-x-8">
-              {['Home', 'About', 'Skills', 'Experience', 'Projects', 'Contact'].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item.toLowerCase())}
-                  className="text-gray-300 hover:text-cyan-400 transition-colors"
-                >
-                  {item}
-                </button>
-              ))}
-            </div>
-          </div>
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #06b6d4;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #06b6d4;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 1.5rem 2rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-icon {
+            width: 128px;
+            height: 128px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-icon svg {
+            width: 64px;
+            height: 64px;
+            stroke: white;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.875rem;
+            color: #d1d5db;
+            margin-bottom: 1rem;
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
+            color: #9ca3af;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: #06b6d4;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #0891b2;
+        }
+
+        .btn-secondary {
+            background-color: #1f2937;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #374151;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-alt {
+            background-color: rgba(31, 41, 55, 0.5);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #06b6d4;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .about-card p {
+            color: #d1d5db;
+            margin-bottom: 1rem;
+        }
+
+        .about-card ul {
+            list-style: none;
+            color: #d1d5db;
+        }
+
+        .about-card ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Certifications */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .cert-card {
+            background-color: #1f2937;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #374151;
+            transition: border-color 0.3s;
+        }
+
+        .cert-card:hover {
+            border-color: #06b6d4;
+        }
+
+        .cert-name {
+            color: #06b6d4;
+            font-weight: bold;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-org {
+            color: #9ca3af;
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .cert-id {
+            color: #6b7280;
+            font-size: 0.75rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background-color: #1f2937;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #374151;
+            transition: all 0.3s;
+        }
+
+        .skill-card:hover {
+            border-color: #06b6d4;
+        }
+
+        .skill-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 1rem;
+            stroke: #06b6d4;
+        }
+
+        .skill-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .skill-list li {
+            color: #9ca3af;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-list li:before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background-color: #06b6d4;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+
+        /* Experience Section */
+        .experience-item {
+            background-color: #1f2937;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border-left: 4px solid #06b6d4;
+            margin-bottom: 2rem;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .experience-date {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        .experience-company {
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item ul {
+            list-style: none;
+            color: #d1d5db;
+        }
+
+        .experience-item ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: #1f2937;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #374151;
+            transition: border-color 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: #06b6d4;
+        }
+
+        .project-card p {
+            color: #d1d5db;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            padding: 0.25rem 0.75rem;
+            background-color: #374151;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            color: #d1d5db;
+        }
+
+        /* Education Section */
+        .education-item {
+            background-color: #1f2937;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .education-item ul {
+            list-style: none;
+            color: #d1d5db;
+            margin-top: 1rem;
+        }
+
+        .education-item ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .education-subtitle {
+            color: #9ca3af;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background-color: #1f2937;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .contact-card:hover {
+            background-color: #374151;
+        }
+
+        .contact-icon {
+            width: 32px;
+            height: 32px;
+            margin: 0 auto 0.75rem;
+            stroke: #06b6d4;
+        }
+
+        .contact-label {
+            color: #9ca3af;
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-value {
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 1.5rem;
+            border-top: 1px solid #374151;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #d1d5db;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .experience-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">Sayedul Islam</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
         </div>
-      </nav>
+    </nav>
 
-      {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center px-6 pt-16">
-        <div className="max-w-4xl text-center">
-          <div className="mb-8">
-            <div className="inline-flex items-center justify-center w-32 h-32 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 mb-6">
-              <Shield className="w-16 h-16 text-white" />
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-icon">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                </svg>
             </div>
-          </div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text">
-            Sayedul Islam
-          </h1>
-          <p className="text-2xl md:text-3xl text-gray-300 mb-4">
-            Network & Cyber Security Engineer
-          </p>
-          <p className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
-            Certified professional specializing in network infrastructure design, cybersecurity, and penetration testing
-          </p>
-          <div className="flex justify-center space-x-4">
-            <a
-              href="#contact"
-              onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}
-              className="px-8 py-3 bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg font-medium transition-colors"
-            >
-              Get In Touch
-            </a>
-            <a
-              href="#projects"
-              onClick={(e) => { e.preventDefault(); scrollToSection('projects'); }}
-              className="px-8 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-lg font-medium transition-colors"
-            >
-              View Projects
-            </a>
-          </div>
-          <div className="mt-12">
-            <ChevronDown className="w-8 h-8 text-gray-500 mx-auto animate-bounce" />
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="py-20 px-6 bg-gray-800/50">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold mb-12 text-center">About Me</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="text-2xl font-semibold mb-4 text-cyan-400">Profile</h3>
-              <p className="text-gray-300 leading-relaxed mb-4">
-                Certified Network & Cyber Security Professional with B.Sc. in Electrical and Electronics Engineering. 
-                Proven track record delivering global remote services and managing local onsite projects.
-              </p>
-              <p className="text-gray-300 leading-relaxed">
-                Expertise in designing, implementing, and securing complex network infrastructures including 
-                Cisco and MikroTik platforms. Skilled in penetration testing, firewall optimization, and DNS security.
-              </p>
+            <h1>Sayedul Islam</h1>
+            <p class="hero-subtitle">Network & Cyber Security Engineer</p>
+            <p class="hero-description">
+                Certified professional specializing in network infrastructure design, cybersecurity, and penetration testing
+            </p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                <a href="#projects" class="btn btn-secondary">View Projects</a>
             </div>
-            <div>
-              <h3 className="text-2xl font-semibold mb-4 text-cyan-400">Quick Facts</h3>
-              <ul className="space-y-2 text-gray-300">
-                <li><strong>Location:</strong> Khulna, Bangladesh</li>
-                <li><strong>Education:</strong> B.Sc. in EEE</li>
-                <li><strong>Experience:</strong> 3+ years in Network Engineering</li>
-                <li><strong>Languages:</strong> Bengali, English</li>
-              </ul>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-alt">
+        <h2>About Me</h2>
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>Profile</h3>
+                <p>
+                    Certified Network & Cyber Security Professional with B.Sc. in Electrical and Electronics Engineering. 
+                    Proven track record delivering global remote services and managing local onsite projects.
+                </p>
+                <p>
+                    Expertise in designing, implementing, and securing complex network infrastructures including 
+                    Cisco and MikroTik platforms. Skilled in penetration testing, firewall optimization, and DNS security.
+                </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Certifications */}
-      <section className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold mb-12 text-center flex items-center justify-center">
-            <Award className="w-10 h-10 mr-3 text-cyan-400" />
-            Certifications
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { name: 'MTCNA', org: 'MikroTik', id: '2511NA9595' },
-              { name: 'MTCRE', org: 'MikroTik', id: '2511RE9608' },
-              { name: 'MTCSE', org: 'MikroTik', id: '2511SE9630' },
-              { name: 'CCEP', org: 'Red Team Leaders', id: 'Certified' }
-            ].map((cert, idx) => (
-              <div key={idx} className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-cyan-500 transition-colors">
-                <div className="text-cyan-400 font-bold text-xl mb-2">{cert.name}</div>
-                <div className="text-gray-400 text-sm mb-1">{cert.org}</div>
-                <div className="text-gray-500 text-xs">ID: {cert.id}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Skills Section */}
-      <section id="skills" className="py-20 px-6 bg-gray-800/50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold mb-12 text-center">Technical Skills</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { icon: Network, title: 'Network Engineering', skills: ['Cisco Router & Switch', 'MikroTik Configuration', 'Network Design', 'IP Planning', 'VLAN & Routing'] },
-              { icon: Shield, title: 'Cybersecurity', skills: ['Penetration Testing', 'Firewall Management', 'Security Hardening', 'Threat Analysis', 'Vulnerability Assessment'] },
-              { icon: Terminal, title: 'Systems & Tools', skills: ['Linux Administration', 'DNS-over-HTTPS', 'Pi-hole', 'FortiGate', 'Cisco ASA'] },
-              { icon: Code, title: 'Protocols & Technologies', skills: ['TCP/IP', 'BGP/OSPF', 'VPN', 'DHCP/DNS', 'Network Monitoring'] },
-              { icon: Network, title: 'Infrastructure', skills: ['Network Redundancy', '4G LTE Failover', 'Dual-ISP Setup', 'Load Balancing', 'High Availability'] },
-              { icon: FileText, title: 'Additional', skills: ['Technical Documentation', 'NOC Operations', 'Project Management', 'Training & Support', 'Traffic Analysis'] }
-            ].map((category, idx) => (
-              <div key={idx} className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-cyan-500 transition-all">
-                <category.icon className="w-10 h-10 text-cyan-400 mb-4" />
-                <h3 className="text-xl font-semibold mb-4">{category.title}</h3>
-                <ul className="space-y-2">
-                  {category.skills.map((skill, i) => (
-                    <li key={i} className="text-gray-400 text-sm flex items-center">
-                      <span className="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>
-                      {skill}
-                    </li>
-                  ))}
+            <div class="about-card">
+                <h3>Quick Facts</h3>
+                <ul>
+                    <li><strong>Location:</strong> Khulna, Bangladesh</li>
+                    <li><strong>Education:</strong> B.Sc. in EEE</li>
+                    <li><strong>Experience:</strong> 3+ years in Network Engineering</li>
+                    <li><strong>Languages:</strong> Bengali, English</li>
                 </ul>
-              </div>
-            ))}
-          </div>
+            </div>
         </div>
-      </section>
+    </section>
 
-      {/* Experience Section */}
-      <section id="experience" className="py-20 px-6">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold mb-12 text-center flex items-center justify-center">
-            <Briefcase className="w-10 h-10 mr-3 text-cyan-400" />
-            Experience
-          </h2>
-          <div className="space-y-8">
-            <div className="bg-gray-800 p-6 rounded-lg border-l-4 border-cyan-500">
-              <div className="flex justify-between items-start mb-3">
+    <!-- Certifications -->
+    <section id="certifications">
+        <h2>🏆 Certifications</h2>
+        <div class="cert-grid">
+            <div class="cert-card">
+                <div class="cert-name">MTCNA</div>
+                <div class="cert-org">MikroTik</div>
+                <div class="cert-id">ID: 2511NA9595</div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-name">MTCRE</div>
+                <div class="cert-org">MikroTik</div>
+                <div class="cert-id">ID: 2511RE9608</div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-name">MTCSE</div>
+                <div class="cert-org">MikroTik</div>
+                <div class="cert-id">ID: 2511SE9630</div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-name">CCEP</div>
+                <div class="cert-org">Red Team Leaders</div>
+                <div class="cert-id">Certified</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section-alt">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <svg class="skill-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                </svg>
+                <h3>Network Engineering</h3>
+                <ul class="skill-list">
+                    <li>Cisco Router & Switch</li>
+                    <li>MikroTik Configuration</li>
+                    <li>Network Design</li>
+                    <li>IP Planning</li>
+                    <li>VLAN & Routing</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <svg class="skill-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                </svg>
+                <h3>Cybersecurity</h3>
+                <ul class="skill-list">
+                    <li>Penetration Testing</li>
+                    <li>Firewall Management</li>
+                    <li>Security Hardening</li>
+                    <li>Threat Analysis</li>
+                    <li>Vulnerability Assessment</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <svg class="skill-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <h3>Systems & Tools</h3>
+                <ul class="skill-list">
+                    <li>Linux Administration</li>
+                    <li>DNS-over-HTTPS</li>
+                    <li>Pi-hole</li>
+                    <li>FortiGate</li>
+                    <li>Cisco ASA</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <svg class="skill-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+                <h3>Protocols & Technologies</h3>
+                <ul class="skill-list">
+                    <li>TCP/IP</li>
+                    <li>BGP/OSPF</li>
+                    <li>VPN</li>
+                    <li>DHCP/DNS</li>
+                    <li>Network Monitoring</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <svg class="skill-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                </svg>
+                <h3>Infrastructure</h3>
+                <ul class="skill-list">
+                    <li>Network Redundancy</li>
+                    <li>4G LTE Failover</li>
+                    <li>Dual-ISP Setup</li>
+                    <li>Load Balancing</li>
+                    <li>High Availability</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <svg class="skill-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <h3>Additional</h3>
+                <ul class="skill-list">
+                    <li>Technical Documentation</li>
+                    <li>NOC Operations</li>
+                    <li>Project Management</li>
+                    <li>Training & Support</li>
+                    <li>Traffic Analysis</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2>💼 Experience</h2>
+        <div class="experience-item">
+            <div class="experience-header">
                 <div>
-                  <h3 className="text-2xl font-semibold text-cyan-400">Network Engineer</h3>
-                  <p className="text-gray-400">Freelance - Remote via Upwork</p>
+                    <h3>Network Engineer</h3>
+                    <p class="experience-company">Freelance - Remote via Upwork</p>
                 </div>
-                <span className="text-gray-500 text-sm">Sep 2021 - Present</span>
-              </div>
-              <ul className="space-y-2 text-gray-300">
+                <span class="experience-date">Sep 2021 - Present</span>
+            </div>
+            <ul>
                 <li>• Delivered global remote network engineering services specializing in Cisco and FortiGate</li>
                 <li>• Provided Tier 2 NOC troubleshooting and managed IP address planning</li>
                 <li>• Contributed to enterprise network design and security enhancement projects</li>
-              </ul>
-            </div>
+            </ul>
+        </div>
 
-            <div className="bg-gray-800 p-6 rounded-lg border-l-4 border-cyan-500">
-              <div className="flex justify-between items-start mb-3">
+        <div class="experience-item">
+            <div class="experience-header">
                 <div>
-                  <h3 className="text-2xl font-semibold text-cyan-400">Network Engineer</h3>
-                  <p className="text-gray-400">Project - Local Client</p>
+                    <h3>Network Engineer</h3>
+                    <p class="experience-company">Project - Local Client</p>
                 </div>
-                <span className="text-gray-500 text-sm">Sep 2021 - Present</span>
-              </div>
-              <ul className="space-y-2 text-gray-300">
+                <span class="experience-date">Sep 2021 - Present</span>
+            </div>
+            <ul>
                 <li>• Penetration testing and firewall security optimization</li>
                 <li>• Implemented 4G LTE and dual-ISP failover for network redundancy</li>
                 <li>• Deployed secure DNS-over-HTTPS and Pi-hole based ad-blocking</li>
                 <li>• Wi-Fi hotspot security and Lancache server deployment</li>
-              </ul>
-            </div>
+            </ul>
+        </div>
 
-            <div className="bg-gray-800 p-6 rounded-lg border-l-4 border-gray-600">
-              <div className="flex justify-between items-start mb-3">
+        <div class="experience-item" style="border-left-color: #6b7280;">
+            <div class="experience-header">
                 <div>
-                  <h3 className="text-2xl font-semibold">Executive (Part-Time)</h3>
-                  <p className="text-gray-400">Exord Online</p>
+                    <h3 style="color: #d1d5db;">Executive (Part-Time)</h3>
+                    <p class="experience-company">Exord Online</p>
                 </div>
-                <span className="text-gray-500 text-sm">Oct 2017 - Apr 2018</span>
-              </div>
-              <ul className="space-y-2 text-gray-300">
+                <span class="experience-date">Oct 2017 - Apr 2018</span>
+            </div>
+            <ul>
                 <li>• Technical support to clients and digital service content enrichment</li>
                 <li>• Assisted in NOC operations and system monitoring</li>
-              </ul>
-            </div>
-          </div>
+            </ul>
         </div>
-      </section>
+    </section>
 
-      {/* Projects Section */}
-      <section id="projects" className="py-20 px-6 bg-gray-800/50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold mb-12 text-center">Key Projects</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-cyan-500 transition-all">
-              <h3 className="text-2xl font-semibold mb-4 text-cyan-400">Network Security Hardening</h3>
-              <p className="text-gray-300 mb-4">
-                Managed full-cycle security hardening including penetration testing, advanced firewalling, 
-                and vulnerability assessments for enterprise clients.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-gray-700 rounded text-sm">Penetration Testing</span>
-                <span className="px-3 py-1 bg-gray-700 rounded text-sm">Firewall Config</span>
-                <span className="px-3 py-1 bg-gray-700 rounded text-sm">Security Audit</span>
-              </div>
+    <!-- Projects Section -->
+    <section id="projects" class="section-alt">
+        <h2>Key Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Network Security Hardening</h3>
+                <p>
+                    Managed full-cycle security hardening including penetration testing, advanced firewalling, 
+                    and vulnerability assessments for enterprise clients.
+                </p>
+                <div class="project-tags">
+                    <span class="tag">Penetration Testing</span>
+                    <span class="tag">Firewall Config</span>
+                    <span class="tag">Security Audit</span>
+                </div>
             </div>
 
-            <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-cyan-500 transition-all">
-              <h3 className="text-2xl font-semibold mb-4 text-cyan-400">Network Redundancy Solutions</h3>
-              <p className="text-gray-300 mb-4">
-                Engineered network redundancy solutions with 4G LTE backup and dual-ISP failover 
-                ensuring 99.9% uptime for critical infrastructure.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-gray-700 rounded text-sm">Failover Config</span>
-                <span className="px-3 py-1 bg-gray-700 rounded text-sm">Load Balancing</span>
-                <span className="px-3 py-1 bg-gray-700 rounded text-sm">High Availability</span>
-              </div>
+            <div class="project-card">
+                <h3>Network Redundancy Solutions</h3>
+                <p>
+                    Engineered network redundancy solutions with 4G LTE backup and dual-ISP failover 
+                    ensuring 99.9% uptime for critical infrastructure.
+                </p>
+                <div class="project-tags">
+                    <span class="tag">Failover Config</span>
+                    <span class="tag">Load Balancing</span>
+                    <span class="tag">High Availability</span>
+                </div>
             </div>
 
-            <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-cyan-500 transition-all">
-              <h3 className="text-2xl font-semibold mb-4 text-cyan-400">DNS Security Implementation</h3>
-              <p className="text-gray-300 mb-4">
-                Deployed advanced DNS security with DNS-over-HTTPS (DoH) and Pi-hole based 
-                ad-blocking to enhance privacy and network performance.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-gray-700 rounded text-sm">DoH</span>
-                <span className="px-3 py-1 bg-gray-700 rounded text-sm">Pi-hole</span>
-                <span className="px-3 py-1 bg-gray-700 rounded text-sm">DNS Security</span>
-              </div>
+            <div class="project-card">
+                <h3>DNS Security Implementation</h3>
+                <p>
+                    Deployed advanced DNS security with DNS-over-HTTPS (DoH) and Pi-hole based 
+                    ad-blocking to enhance privacy and network performance.
+                </p>
+                <div class="project-tags">
+                    <span class="tag">DoH</span>
+                    <span class="tag">Pi-hole</span>
+                    <span class="tag">DNS Security</span>
+                </div>
             </div>
 
-            <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-cyan-500 transition-all">
-              <h3 className="text-2xl font-semibold mb-4 text-cyan-400">Thesis: Bufferbloat Analysis</h3>
-              <p className="text-gray-300 mb-4">
-                Investigated excessive buffering in networks causing high latency. Analyzed impacts 
-                on real-time applications and applied testing methods to measure network performance.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-gray-700 rounded text-sm">Network Analysis</span>
-                <span className="px-3 py-1 bg-gray-700 rounded text-sm">Performance Testing</span>
-                <span className="px-3 py-1 bg-gray-700 rounded text-sm">Research</span>
-              </div>
+            <div class="project-card">
+                <h3>Thesis: Bufferbloat Analysis</h3>
+                <p>
+                    Investigated excessive buffering in networks causing high latency. Analyzed impacts 
+                    on real-time applications and applied testing methods to measure network performance.
+                </p>
+                <div class="project-tags">
+                    <span class="tag">Network Analysis</span>
+                    <span class="tag">Performance Testing</span>
+                    <span class="tag">Research</span>
+                </div>
             </div>
-          </div>
         </div>
-      </section>
+    </section>
 
-      {/* Education Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold mb-12 text-center flex items-center justify-center">
-            <GraduationCap className="w-10 h-10 mr-3 text-cyan-400" />
-            Education & Training
-          </h2>
-          <div className="space-y-6">
-            <div className="bg-gray-800 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-cyan-400">B.Sc. in Electrical and Electronics Engineering</h3>
-              <p className="text-gray-400">North Western University • 2022</p>
-            </div>
-            <div className="bg-gray-800 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold mb-4">Professional Training</h3>
-              <ul className="space-y-2 text-gray-300">
+    <!-- Education Section -->
+    <section id="education">
+        <h2>🎓 Education & Training</h2>
+        <div class="education-item">
+            <h3>B.Sc. in Electrical and Electronics Engineering</h3>
+            <p class="education-subtitle">North Western University • 2022</p>
+        </div>
+        <div class="education-item">
+            <h3>Professional Training</h3>
+            <ul>
                 <li>• Cisco Certified Network Associate (CCNA) - KUET, 2025</li>
                 <li>• Cisco Certified Network Professional (CCNP ENCOR) - CSL Academy, 2025</li>
                 <li>• Red Hat Certified System Administrator (RHCSA) - CSL Academy, 2025</li>
                 <li>• Cisco Network Security - NACTAR, 2025</li>
                 <li>• Ethical Hacker - Cisco Network Academy, 2025</li>
-              </ul>
-            </div>
-          </div>
+            </ul>
         </div>
-      </section>
+    </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-20 px-6 bg-gray-800/50">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-8">Get In Touch</h2>
-          <p className="text-xl text-gray-300 mb-12">
+    <!-- Contact Section -->
+    <section id="contact" class="section-alt">
+        <h2>Get In Touch</h2>
+        <p style="text-align: center; font-size: 1.25rem; color: #d1d5db; margin-bottom: 3rem;">
             Looking for a Network or Security Engineer? Let's discuss how I can help secure and optimize your infrastructure.
-          </p>
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            <a href="mailto:tosayedmirza@gmail.com" className="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition-colors">
-              <Mail className="w-8 h-8 text-cyan-400 mx-auto mb-3" />
-              <p className="text-gray-400 text-sm">Email</p>
-              <p className="text-white">tosayedmirza@gmail.com</p>
+        </p>
+        <div class="contact-grid">
+            <a href="mailto:tosayedmirza@gmail.com" class="contact-card">
+                <svg class="contact-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <p class="contact-label">Email</p>
+                <p class="contact-value">tosayedmirza@gmail.com</p>
             </a>
-            <a href="https://linkedin.com/in/sayed4" target="_blank" rel="noopener noreferrer" className="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition-colors">
-              <Linkedin className="w-8 h-8 text-cyan-400 mx-auto mb-3" />
-              <p className="text-gray-400 text-sm">LinkedIn</p>
-              <p className="text-white">linkedin.com/in/sayed4</p>
-            </a>
-            <div className="bg-gray-800 p-6 rounded-lg">
-              <Network className="w-8 h-8 text-cyan-400 mx-auto mb-3" />
-              <p className="text-gray-400 text-sm">WhatsApp</p>
-              <p className="text-white">+88 01838377410</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-8 px-6 border-t border-gray-800">
-        <div className="max-w-6xl mx-auto text-center text-gray-400">
-          <p>© 2024 Sayedul Islam. All rights reserved.</p>
-          <p className="text-sm mt-2">Network & Cyber Security Engineer</p>
-        </div>
-      </footer>
-    </div>
-  );
-}
+            <a href="https://linkedin.com/in/sayed4" target="_blank" rel="noopener noreferrer" class="contact-card">
+                <svg class="contact-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-
