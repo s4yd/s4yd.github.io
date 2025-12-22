@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/s4yd.github.io/static/css/main.91a7d96d.css",
+    "main.js": "/s4yd.github.io/static/js/main.86bcf080.js",
+    "static/js/557.3b3f62aa.chunk.js": "/s4yd.github.io/static/js/557.3b3f62aa.chunk.js",
+    "static/js/102.679ab3cb.chunk.js": "/s4yd.github.io/static/js/102.679ab3cb.chunk.js",
+    "static/js/199.0c615f3a.chunk.js": "/s4yd.github.io/static/js/199.0c615f3a.chunk.js",
+    "static/js/883.a5f0efd4.chunk.js": "/s4yd.github.io/static/js/883.a5f0efd4.chunk.js",
+    "static/js/886.e4cd3265.chunk.js": "/s4yd.github.io/static/js/886.e4cd3265.chunk.js",
+    "static/css/544.d6e4c020.chunk.css": "/s4yd.github.io/static/css/544.d6e4c020.chunk.css",
+    "static/js/544.01ce4a83.chunk.js": "/s4yd.github.io/static/js/544.01ce4a83.chunk.js",
+    "static/js/270.64374e52.chunk.js": "/s4yd.github.io/static/js/270.64374e52.chunk.js",
+    "static/media/github-foundations.png": "/s4yd.github.io/static/media/github-foundations.7d5749c0be2c1342f215.png",
+    "static/media/sayedul-islam-pic.jpeg": "/s4yd.github.io/static/media/sayedul-islam-pic.1fd0c2cceaccd3584f51.jpeg",
+    "static/media/aws-cda.png": "/s4yd.github.io/static/media/aws-cda.6b2fe0732acede573757.png",
+    "static/media/aws-ccp.png": "/s4yd.github.io/static/media/aws-ccp.1d4d9fa250269a5b5067.png",
+    "index.html": "/s4yd.github.io/index.html",
+    "main.91a7d96d.css.map": "/s4yd.github.io/static/css/main.91a7d96d.css.map",
+    "main.86bcf080.js.map": "/s4yd.github.io/static/js/main.86bcf080.js.map",
+    "557.3b3f62aa.chunk.js.map": "/s4yd.github.io/static/js/557.3b3f62aa.chunk.js.map",
+    "102.679ab3cb.chunk.js.map": "/s4yd.github.io/static/js/102.679ab3cb.chunk.js.map",
+    "199.0c615f3a.chunk.js.map": "/s4yd.github.io/static/js/199.0c615f3a.chunk.js.map",
+    "883.a5f0efd4.chunk.js.map": "/s4yd.github.io/static/js/883.a5f0efd4.chunk.js.map",
+    "886.e4cd3265.chunk.js.map": "/s4yd.github.io/static/js/886.e4cd3265.chunk.js.map",
+    "544.d6e4c020.chunk.css.map": "/s4yd.github.io/static/css/544.d6e4c020.chunk.css.map",
+    "544.01ce4a83.chunk.js.map": "/s4yd.github.io/static/js/544.01ce4a83.chunk.js.map",
+    "270.64374e52.chunk.js.map": "/s4yd.github.io/static/js/270.64374e52.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.91a7d96d.css",
+    "static/js/main.86bcf080.js"
+  ]
+}
